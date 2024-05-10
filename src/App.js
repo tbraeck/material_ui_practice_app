@@ -4,29 +4,17 @@ import TourCard from './components/TourCard';
 // import Container from '@mui/material/Container';
 import { Grid, Container, Typography } from '@mui/material';
 import cities from "./data.json"
+import Home from './pages/Home';
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
-      <SearchAppBar/>
-      <Container sx={{marginY: 5}}>
-        {cities.map((city) => (
-          <>
-          <Typography 
-          variant="h4"
-          component="h2"
-          marginTop={5}
-          marginBottom={3}
-          >
-            Top {city.name} Tours
-          </Typography>
-          <Grid container spacing={3}>
-            {city.tours.map((tour, index) => <TourCard tour={tour} key={index}/> )}
-          </Grid>
-          </>
-         ))}
-      </Container>
-    </div>
+    <BrowserRouter>
+    <SearchAppBar/>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
